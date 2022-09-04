@@ -3,6 +3,7 @@ Outil pour créer, modifier et lire des databases SQL en python à l'aide de la 
 
 Ce programme a été créé par Matthieu Boyer | MP* au Lycée La Martinière Monplaisir.
 
+Pour assurer son fonctionnement, veillez à avoir toutes les librairies intégrées à Python installées, en particulier pathlib et sqlite3. 
 
 Ce programme "automatise" partiellement la création de l'une des requêtes/query SQL et permet leur exécution via Python et le module SQLite 3. Pour cela, il créé une base de données à partir de la commande ligne 28. L'argument est le nom du fichier souhaité.
 
