@@ -5,7 +5,7 @@ Ce programme a été créé par Matthieu Boyer | MP* au Lycée La Martinière Mo
 
 Pour assurer son fonctionnement, veillez à avoir toutes les librairies intégrées à Python installées, en particulier pathlib et sqlite3. 
 
-Ce programme "automatise" partiellement la création de l'une des requêtes/query SQL et permet leur exécution via Python et le module SQLite 3. Pour cela, il créé une base de données à partir de la commande ligne 28. L'argument est le nom du fichier souhaité.
+Ce programme permet l'automatisation partielle de la création de requêtes/query SQL et permet leur exécution via Python et le module SQLite 3. Pour cela, il créé une base de données à partir de la commande ligne 28. L'argument est le nom du fichier souhaité.
 
 Dans toute le programme, sauf précisé dans la signature ou l'aide de la fonction, les arguments sont des listes de string.
 Ce programme est voué à être modifié pour faciliter son utilisation. Si une valeur est assignée à un argument lors de l'appel d'une fonction, celui-ci est facultatif (l'aide de la fonction l'indique). Pour ajouter une valeur àl'argument facultatif x, appelez la fonction avec f(a, b, c, x = valeur).
