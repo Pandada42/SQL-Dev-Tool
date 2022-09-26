@@ -89,7 +89,7 @@ def create_values(table, attributs, enregistrements):
 
         for j in range(len(enregistrements[i])):
             query += enregistrements[i][j]
-            if i != len(attributs) - 1:
+            if j != len(attributs) - 1:
                 query += ", "
 
         if i != len(enregistrements) - 1:
