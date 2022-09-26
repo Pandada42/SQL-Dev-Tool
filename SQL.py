@@ -16,13 +16,11 @@ def create_connection(file: str):
     return connection
 
 
-connexion = create_connection("Database.sqlite")
-
-
+# connexion = create_connection(r"/nomsouhaité.sqlite")
 # Sert d'argument 'connection' dans les fonctions 'execute_(nom)_query'.
 
 
-def execute_modify_query(query, connection = connexion):
+def execute_modify_query(query, connection):
     """Les modify query sont les 'CREATE TABLE' et 'CREATE VALUES'. Permet d'exécuter ce type de requêtes."""
     cursor = connection.cursor()
     try:
@@ -33,7 +31,7 @@ def execute_modify_query(query, connection = connexion):
         print(f"The error '{e}' occured")
 
 
-def execute_read_query(query, connection = connexion):
+def execute_read_query(query, connection):
     """Les read query sont les 'SELECT' et les 'UPDATE'. Permet d'exécuter ce type de requêtes."""
     cursor = connection.cursor()
     result = None
@@ -64,10 +62,11 @@ def create_table(nom: str, attributs, types, key = "") -> str:
 
     query += key
     query += ");"
+    print(query)
     return query
 
 
-def create_values(table, attributs, enregistrements):
+def create_values(table, enregistrements,  attributs = []):
     """ Le str table est le nom de la table à remplir. La liste 'attributs' est la liste des noms des colonnes de la
     table. La liste 'enregistrements' est la liste des listes des valeurs des attributs d'un enregistrement (Ligne
     puis colonne)."""
@@ -75,28 +74,33 @@ def create_values(table, attributs, enregistrements):
     query = "INSERT INTO"
     query += "\n"
     query += table
-    query += " ("
 
-    for i in range(len(attributs)):
-        query += attributs[i]
-        if i != len(attributs) - 1:
-            query += ", "
+    if attributs :
+        query += " ("
 
-    query += ") \n VALUES \n"
+        for i in range(len(attributs)):
+            query += attributs[i]
+            if i != len(attributs) - 1:
+                query += ", "
+
+        query += ")"
+
+    query += "\n VALUES \n"
 
     for i in range(len(enregistrements)):
         query += "\t ("
 
         for j in range(len(enregistrements[i])):
             query += enregistrements[i][j]
-            if j != len(attributs) - 1:
+            if j != (len(enregistrements[0]) - 1):
                 query += ", "
 
         if i != len(enregistrements) - 1:
             query += "), \n "
         else:
-            query += ");"
-
+            query += ")"
+    query += ";"
+    print(query)
     return query
 
 
